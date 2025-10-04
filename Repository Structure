@@ -1,0 +1,11 @@
+Employee-Attrition-Analysis/
+├── data/
+│   └── employee_attrition.csv        # Sample dataset
+├── notebooks/
+│   └── EDA.ipynb                    # Exploratory Data Analysis
+├── src/
+│   ├── data_preprocessing.py        # Preprocessing code
+│   └── model_training.py            # ML model training
+├── screenshots/                      # Saved PNG plots from EDA
+├── requirements.txt                  # Python dependencies
+└── README.md                         # Project documentation

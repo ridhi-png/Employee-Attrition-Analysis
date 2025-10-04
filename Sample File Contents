@@ -1,0 +1,20 @@
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+def load_and_preprocess_data(csv_path='"C:\Users\ridhi\Age,DistanceFromHome,Department,Edu.csv"'):
+    df = pd.read_csv(csv_path)
+    
+    # Encode categorical columns
+    cat_cols = ['Department', 'EducationField', 'Gender', 'JobRole', 'MaritalStatus', 'OverTime']
+    for col in cat_cols:
+        df[col] = LabelEncoder().fit_transform(df[col])
+    
+    # Scale numerical columns
+    num_cols = ['Age','DistanceFromHome','MonthlyIncome','NumCompaniesWorked',
+                'TotalWorkingYears','TrainingTimesLastYear','YearsAtCompany',
+                'YearsInCurrentRole','YearsSinceLastPromotion','YearsWithCurrManager']
+    df[num_cols] = StandardScaler().fit_transform(df[num_cols])
+    
+    X = df.drop('Attrition', axis=1)
+    y = df['Attrition'].apply(lambda x: 1 if x=='Yes' else 0)
+    return X, y
